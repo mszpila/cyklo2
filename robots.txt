@@ -1,0 +1,10 @@
+User-agent: *
+Disallow:
+
+# Optional: Prevent indexing of specific files or folders
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+Disallow: /cgi-bin/
+
+# No sitemap since it's a one-pager
