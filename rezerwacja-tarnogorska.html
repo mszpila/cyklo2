@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Umów wizytę - Cyklo2</title>
+  <link href="./dist/styles.css" rel="stylesheet">
+  <link rel="shortcut icon" href="" type="image/x-icon">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cykloOrange: '#ff6b35'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gray-50 font-sans min-h-screen">
+
+<header id="head" class="bg-backgroundDark top-0 left-0 right-0 z-10 shadow-2xl transition-transform duration-300 pb-12 sm:pb-4 pt-4">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex xs:items-center xs:justify-between h-16 flex-col xs:flex-row">
+      <!-- Logo + Desktop Navigation -->
+      <div class="flex flex-col items-start">
+        <img class="h-8 hover:cursor-pointer" src="https://cyklo2.pl/id/img/cyklo2.png" alt="logo"/>
+        <img class="h-10 hover:cursor-pointer" src="https://cyklo2.pl/id/img/logo.png" alt="logo"/>
+      </div>
+      <div class="flex items-center xs:items-center justify-between space-x-4 pt-4 sm:pt-0">
+        <!--        <img class="h-10 w-auto hover:cursor-pointer" src="https://cyklo2.pl/id/img/logo.png" alt="logo"/>-->
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu (Hidden by Default) -->
+  <div id="mobileMenu" class="hidden bg-backgroundDark py-4">
+    <nav class="flex flex-col gap-24 text-center">
+      <a onclick="scrollToId('platforms')" class="text-white text-2xl font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300 pt-12">Platforms</a>
+      <a onclick="scrollToId('pricing')" class="text-white text-2xl font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300">Pricing</a>
+      <a onclick="scrollToId('features')" class="text-white text-2xl font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300">Features</a>
+      <a onclick="scrollToId('us')" class="text-white text-2xl font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300 pb-12">About Us</a>
+    </nav>
+  </div>
+</header>
+
+<div class="max-w-6xl px-2 sm:px-0 mx-auto pb-16 pt-8">
+  <div class="">
+    <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden" id="appointmentFormContainer">
+      <div class="bg-cykloOrange py-4">
+        <h3 class="text-xl font-semibold text-center text-white">Umów wizytę w sklepie</h3>
+      </div>
+
+      <div class="flex justify-around">
+        <div class="p-6 w-full">
+          <form id="appointmentForm" class="space-y-6">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+              </div>
+              <div class="ml-4 flex-1">
+                <label for="appointmentDate" class="block text-sm font-medium text-gray-700 mb-2">
+                  Wybierz datę
+                </label>
+                <input
+                        type="date"
+                        id="appointmentDate"
+                        name="appointmentDate"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        placeholder=""
+                        required
+                >
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <div class="ml-4 flex-1">
+                <label for="appointmentTime" class="block text-sm font-medium text-gray-700 mb-2">
+                  Wybierz godzinę
+                </label>
+                <select
+                        id="appointmentTime"
+                        name="appointmentTime"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        required
+                        disabled
+                >
+                  <option value="">Najpierw wybierz datę</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="pt-4 flex justify-center">
+              <button
+                      type="submit"
+                      class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all bg-cykloOrange duration-300 ease-in-out rounded-2xl shadow-xl hover:bg-orange-600 active:scale-95 transform"
+              >
+                Potwierdź
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirmation Message -->
+    <div id="confirmationMessage" class="hidden">
+      <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden">
+        <div class="bg-cykloOrange py-4">
+          <h3 class="text-xl font-semibold text-center text-white">Potwierdzenie rezerwacji</h3>
+        </div>
+
+        <div class="flex justify-around">
+          <div class="p-6 w-full">
+            <!-- Success Icon -->
+            <div class="text-center mb-8">
+              <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+                <svg class="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                </svg>
+              </div>
+              <h2 class="text-2xl font-bold text-gray-800 mb-2">Wizyta została umówiona!</h2>
+              <p class="text-gray-600">Dziękujemy za wybór naszego serwisu</p>
+            </div>
+
+            <!-- Reservation Number -->
+            <div class="bg-gradient-to-r from-blue-50 to-blue-100 border-l-4 border-blue-400 p-6 mb-6 rounded-lg">
+              <div class="flex items-center">
+                <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-semibold text-gray-800">Numer rezerwacji</h4>
+                  <p class="text-2xl font-bold text-blue-600" id="reservationNumber">CY-2025-001234</p>
+                  <p class="text-sm text-gray-600 mt-1">Zachowaj ten numer</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Appointment Details -->
+            <div class="space-y-4 mb-8">
+              <div class="flex items-start">
+                <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <h4 class="font-semibold text-gray-800">Data wizyty</h4>
+                  <p class="text-gray-700" id="appointmentDateDisplay"></p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <h4 class="font-semibold text-gray-800">Godzina</h4>
+                  <p class="text-gray-700" id="appointmentTimeDisplay"></p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
+                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  </svg>
+                </div>
+                <div class="ml-4">
+                  <h4 class="font-semibold text-gray-800">Lokalizacja</h4>
+                  <p class="text-gray-700">ul. Tarnogórska 4<br/>44-100 Gliwice</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button
+                      onclick="window.print()"
+                      class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-3 px-6 rounded-lg border border-gray-300 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+              >
+                <div class="flex items-center justify-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                  </svg>
+                  Wydrukuj potwierdzenie
+                </div>
+              </button>
+
+              <button
+                      onclick="goHome()"
+                      class="flex-1 bg-cykloOrange hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+              >
+                <div class="flex items-center justify-center">
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                  </svg>
+                  Powrót do strony głównej
+                </div>
+              </button>
+
+              <!--              <button-->
+              <!--                      onclick="bookAnother()"-->
+              <!--                      class="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"-->
+              <!--              >-->
+              <!--                <div class="flex items-center justify-center">-->
+              <!--                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+              <!--                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>-->
+              <!--                  </svg>-->
+              <!--                  Umów kolejną wizytę-->
+              <!--                </div>-->
+              <!--              </button>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Set minimum date to today and maximum date to 30 days from now
+  const today = new Date();
+  const todayString = today.toISOString().split('T')[0];
+
+  const maxDate = new Date(today);
+  maxDate.setDate(today.getDate() + 30);
+  const maxDateString = maxDate.toISOString().split('T')[0];
+
+  const dateInput = document.getElementById('appointmentDate');
+  dateInput.setAttribute('min', todayString);
+  dateInput.setAttribute('max', maxDateString);
+
+  // Auto-focus the date input to potentially show calendar
+  dateInput.addEventListener('focus', function() {
+    try {
+      this.showPicker();
+    } catch (e) {
+      // showPicker not supported in all browsers
+    }
+  });
+
+  // Weekend validation and time slot management
+  document.getElementById('appointmentDate').addEventListener('change', function() {
+    const selectedDate = new Date(this.value + 'T00:00:00');
+    const dayOfWeek = selectedDate.getDay();
+    const timeSelect = document.getElementById('appointmentTime');
+
+    // Check if it's Sunday (0)
+    if (dayOfWeek === 0) {
+      alert('Przepraszamy, w niedziele jesteśmy nieczynni. Prosimy wybrać inny dzień.');
+      this.value = '';
+      timeSelect.innerHTML = '<option value="">Najpierw wybierz datę</option>';
+      timeSelect.disabled = true;
+      return;
+    }
+
+    // Enable time select and clear options
+    timeSelect.disabled = false;
+    timeSelect.innerHTML = '<option value="">Wybierz godzinę</option>';
+
+    let availableHours = [];
+
+    if (dayOfWeek === 6) { // Saturday
+      // Saturday hours: 10:00 - 14:00
+      availableHours = ['10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30'];
+    } else { // Monday to Friday
+      // Weekday hours: 10:00 - 18:00
+      // availableHours = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'];
+      availableHours = ['10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30'];
+    }
+
+    // Add available hours to select
+    availableHours.forEach(hour => {
+      const option = document.createElement('option');
+      option.value = hour;
+      option.textContent = hour;
+      timeSelect.appendChild(option);
+    });
+  });
+
+  // Handle form submission
+  document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const date = document.getElementById('appointmentDate').value;
+    const time = document.getElementById('appointmentTime').value;
+
+    if (!date || !time) {
+      alert('Proszę wybrać datę i godzinę wizyty.');
+      return;
+    }
+
+    // Format date for display
+    const selectedDate = new Date(date + 'T00:00:00');
+    const formattedDate = selectedDate.toLocaleDateString('pl-PL', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+
+    // Generate reservation number
+    const reservationNumber = generateReservationNumber();
+
+    // Update confirmation details
+    document.getElementById('reservationNumber').textContent = reservationNumber;
+    document.getElementById('appointmentDateDisplay').textContent = formattedDate;
+    document.getElementById('appointmentTimeDisplay').textContent = time;
+
+    // Show confirmation message and hide form
+    document.getElementById('appointmentFormContainer').style.display = 'none';
+    document.getElementById('confirmationMessage').classList.remove('hidden');
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    console.log('Appointment booked:', { date, time, reservationNumber });
+
+    fetch("https://qa.cyklo2.com/reservation", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ date, time, reservationNumber })
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      // alert("Thank you! We will contact you shortly.");
+      // Redirect to the thank-you page
+      // window.location.href = "thank-you.html";
+    })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+        // alert("There was an error processing your request. Please try again later.");
+      });
+  });
+
+  function generateReservationNumber() {
+    const year = new Date().getFullYear();
+    const month = String(new Date().getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+    const day = String(new Date().getDate()).padStart(2, '0');
+    const randomNum = Math.floor(Math.random() * 900000) + 100000;
+    return `CT-${year}${month}${day}-${randomNum}`;
+  }
+
+  function goHome() {
+    window.location.href = 'https://cyklo2.pl';
+  }
+
+  function bookAnother() {
+    // Reset form and show it again
+    document.getElementById('appointmentForm').reset();
+    document.getElementById('appointmentTime').disabled = true;
+    document.getElementById('appointmentTime').innerHTML = '<option value="">Najpierw wybierz datę</option>';
+
+    document.getElementById('confirmationMessage').classList.add('hidden');
+    document.getElementById('appointmentFormContainer').style.display = 'block';
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+
+<div className="flex-grow"></div>
+
+</body>
+</html>

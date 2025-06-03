@@ -11,132 +11,116 @@
   <script src="logic.js" defer></script>
 </head>
 
-<body class="bg-gray-50 font-sans min-h-screen">
+<body class="bg-gray-50 font-sans min-h-screen flex flex-col">
 
-<header id="head" class="bg-backgroundDark top-0 left-0 right-0 z-10 shadow-2xl pb-8 transition-transform duration-300">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex xs:items-center xs:justify-between h-16 flex-col xs:flex-row">
-      <!-- Logo + Desktop Navigation -->
-      <div class="flex items-center space-x-8">
-        <img class="h-8 w-auto hover:cursor-pointer" src="https://cyklo2.pl/id/img/cyklo2.png" alt="logo"/>
+<!--<header id="head" class="bg-backgroundDark top-0 left-0 right-0 z-10 shadow-2xl pb-8 transition-transform duration-300">-->
+<!--  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">-->
+<!--    <div class="flex xs:items-center xs:justify-between h-16 flex-col xs:flex-row">-->
+<!--      &lt;!&ndash; Logo + Desktop Navigation &ndash;&gt;-->
+<!--      <div class="flex items-center space-x-8">-->
+<!--        <img class="h-8 w-auto hover:cursor-pointer" src="https://cyklo2.pl/id/img/cyklo2.png" alt="logo"/>-->
 
-        <!-- Desktop Navigation Links (Hidden on Mobile) -->
-<!--        <nav class="hidden lg:flex space-x-6">-->
-<!--          <a onclick="scrollToId('platforms')" class="text-white text-lg font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300">Platforms</a>-->
-<!--          <a onclick="scrollToId('pricing')" class="text-white text-lg font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300">Pricing</a>-->
-<!--          <a onclick="scrollToId('features')" class="text-white text-lg font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300">Features</a>-->
-<!--          <a onclick="scrollToId('us')" class="text-white text-lg font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300">About Us</a>-->
-<!--        </nav>-->
-      </div>
+<!--        &lt;!&ndash; Desktop Navigation Links (Hidden on Mobile) &ndash;&gt;-->
+<!--&lt;!&ndash;        <nav class="hidden lg:flex space-x-6">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a onclick="scrollToId('platforms')" class="text-white text-lg font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300">Platforms</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a onclick="scrollToId('pricing')" class="text-white text-lg font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300">Pricing</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a onclick="scrollToId('features')" class="text-white text-lg font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300">Features</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a onclick="scrollToId('us')" class="text-white text-lg font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300">About Us</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </nav>&ndash;&gt;-->
+<!--      </div>-->
 
-      <!-- Right Section (Contact Us + Mobile Menu) -->
-      <div class="flex items-baseline xs:items-center justify-between space-x-4">
-        <img class="h-10 w-auto hover:cursor-pointer" src="https://cyklo2.pl/id/img/logo.png" alt="logo"/>
+<!--      &lt;!&ndash; Right Section (Contact Us + Mobile Menu) &ndash;&gt;-->
+<!--      <div class="flex items-baseline xs:items-center justify-between space-x-4">-->
+<!--        <img class="h-10 w-auto hover:cursor-pointer" src="https://cyklo2.pl/id/img/logo.png" alt="logo"/>-->
 
-        <!-- Contact Us Button -->
-<!--        <button type="button" onclick="scrollToElement()" class="w-32 bg-interactionDark hover:bg-interaction text-white font-bold py-2 px-4 rounded transition duration-300">-->
-<!--          Contact Us-->
-<!--        </button>-->
+<!--        &lt;!&ndash; Contact Us Button &ndash;&gt;-->
+<!--&lt;!&ndash;        <button type="button" onclick="scrollToElement()" class="w-32 bg-interactionDark hover:bg-interaction text-white font-bold py-2 px-4 rounded transition duration-300">&ndash;&gt;-->
+<!--&lt;!&ndash;          Contact Us&ndash;&gt;-->
+<!--&lt;!&ndash;        </button>&ndash;&gt;-->
 
-        <!-- Mobile Menu Button -->
-<!--        <button id="menuButton" class="lg:hidden text-white text-4xl focus:outline-none">-->
-<!--          &#9776; &lt;!&ndash; Unicode for "≡" &ndash;&gt;-->
-<!--        </button>-->
-      </div>
-    </div>
-  </div>
+<!--        &lt;!&ndash; Mobile Menu Button &ndash;&gt;-->
+<!--&lt;!&ndash;        <button id="menuButton" class="lg:hidden text-white text-4xl focus:outline-none">&ndash;&gt;-->
+<!--&lt;!&ndash;          &#9776; &lt;!&ndash; Unicode for "≡" &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        </button>&ndash;&gt;-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <!-- Mobile Menu (Hidden by Default) -->
-  <div id="mobileMenu" class="hidden bg-backgroundDark py-4">
-    <nav class="flex flex-col gap-24 text-center">
-      <a onclick="scrollToId('platforms')" class="text-white text-2xl font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300 pt-12">Platforms</a>
-      <a onclick="scrollToId('pricing')" class="text-white text-2xl font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300">Pricing</a>
-      <a onclick="scrollToId('features')" class="text-white text-2xl font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300">Features</a>
-      <a onclick="scrollToId('us')" class="text-white text-2xl font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300 pb-12">About Us</a>
-    </nav>
-  </div>
-</header>
+<!--  &lt;!&ndash; Mobile Menu (Hidden by Default) &ndash;&gt;-->
+<!--  <div id="mobileMenu" class="hidden bg-backgroundDark py-4">-->
+<!--    <nav class="flex flex-col gap-24 text-center">-->
+<!--      <a onclick="scrollToId('platforms')" class="text-white text-2xl font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300 pt-12">Platforms</a>-->
+<!--      <a onclick="scrollToId('pricing')" class="text-white text-2xl font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300">Pricing</a>-->
+<!--      <a onclick="scrollToId('features')" class="text-white text-2xl font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300">Features</a>-->
+<!--      <a onclick="scrollToId('us')" class="text-white text-2xl font-medium hover:text-gray-300 hover:cursor-pointer transition duration-300 pb-12">About Us</a>-->
+<!--    </nav>-->
+<!--  </div>-->
+<!--</header>-->
 
-<div class="w-full py-32" style="background-color: #f9f9f9; background-position: center; background-image: url('https://cyklo2.pl/id/img/logos/bg.jpg');">
-  <div class="p-8 rounded-lg text-center">
-    <a href="https://google.com">
-      <button type="button" onclick="scrollToElement()" class="w-64 bg-interactionDark text-white hover:bg-orange-500 hover:text-white font-bold py-4 px-8 rounded transition duration-300">
-        Sklep internetowy
-      </button>
-    </a>
-  </div>
-</div>
+<div class="max-w-24xl sm:px-4 sm:pb-8 sm:pt-8 flex-1 flex flex-col sm:flex-row sm:gap-4">
+<!--  <div class="flex flex-col sm:flex-row w-full sm:gap-4">-->
 
-<div class="max-w-6xl mx-auto px-4 py-16 bg-gray-50">
-  <div class="">
-    <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden">
-      <div class="bg-cykloOrange py-4">
-        <h3 class="text-xl font-semibold text-center text-white">Oddział Gliwice</h3>
-      </div>
-      <div class="p-6">
-        <div class="flex flex-col space-y-4 mb-6">
-          <div class="flex items-start">
-            <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              </svg>
-            </div>
-            <div class="ml-4">
-              <p class="text-gray-700">ul. Tarnogórska 4<br/>44-100 Gliwice</p>
+    <!--sklep 1-->
+    <div id="sklep1" class="bg-interactionTintDark sm:rounded-lg shadow-lg overflow-hidden w-full flex-1 flex flex-col items-center sm:pt-36">
+        <div class="p-6">
+
+          <div class="flex flex-col space-y-4 mb-6">
+            <div class="flex items-start">
+              <div class="ml-4">
+                <img class="h-8 w-auto hover:cursor-pointer" src="https://cyklo2.pl/id/img/cyklo2.png" alt="logo"/>
+
+                <img class="h-10 w-auto hover:cursor-pointer" src="https://cyklo2.pl/id/img/logo.png" alt="logo"/>
+                <p class="text-white pt-4 text-lg md:text-xl lg:text-6xl">ul. Tarnogórska 4<br/>44-100 Gliwice</p>
+              </div>
             </div>
           </div>
 
-          <div class="flex items-start">
-            <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-              </svg>
-            </div>
-            <div class="ml-4">
-              <a href="tel:32 279 17 37">
-                <p class="text-gray-700">tel.: <span class="font-bold">32 279 17 37</span></p>
+          <div class="w-full rounded-lg overflow-hidden">
+              <a href="tarnogorska.html">
+                <button class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all bg-cykloOrange duration-300 ease-in-out rounded-2xl shadow-xl hover:bg-orange-600 active:scale-95 transform ">
+                  Wybierz sklep
+                </button>
               </a>
-              <a href="mailto:sklep@cyklo2.pl">
-                <p class="text-gray-700">e-mail: <span class="font-bold">sklep@cyklo2.pl</span></p>
-              </a>
-            </div>
-          </div>
-
-          <div class="flex items-start">
-            <div class="flex-shrink-0 bg-blue-100 p-3 rounded-full">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-            </div>
-            <div class="ml-4">
-              <p class="text-gray-700">Zapraszamy od Pn do Pt <span class="font-bold">10:00 - 18:00</span></p>
-              <p class="text-gray-700">w Sobotę <span class="font-bold">10:00 - 14:00</span></p>
-            </div>
           </div>
         </div>
-
-        <div class="w-full h-80 rounded-lg overflow-hidden">
-          <iframe
-                  class="w-full h-full border-none"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2548.5104814012043!2d18.677811951724397!3d50.30106497935425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4711305312dc82e1%3A0x7529d8d52e1d18d1!2sCYKLO+2+s.c.!5e0!3m2!1spl!2spl!4v1481579580687"
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
-      </div>
     </div>
-  </div>
+
+    <!--sklep 2-->
+    <div id="sklep2" class="bg-interactionTintDark sm:rounded-lg shadow-lg overflow-hidden w-full flex-1 flex flex-col items-center sm:pt-36">
+
+        <div class="p-6">
+
+          <div class="flex flex-col space-y-4 mb-6">
+            <div class="flex items-start">
+              <div class="ml-4">
+                <img class="h-8 w-auto hover:cursor-pointer" src="https://cyklo2.pl/id/img/cyklo2.png" alt="logo"/>
+
+                <img class="h-10 w-auto hover:cursor-pointer" src="https://cyklo2.pl/id/img/logo.png" alt="logo"/>
+                <p class="text-white pt-4 text-lg md:text-xl lg:text-6xl">ul. Na Piasku 1<br/>44-100 Gliwice</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-full rounded-lg overflow-hidden">
+            <a href="na-piasku.html">
+              <button class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all bg-cykloOrange duration-300 ease-in-out rounded-2xl shadow-xl hover:bg-orange-600 active:scale-95 transform">
+                Wybierz sklep
+              </button>
+            </a>
+          </div>
+        </div>
+    </div>
+
+<!--  </div>-->
 </div>
 
-<div className="flex-grow"></div>
+<!--<div className="flex-grow"></div>-->
 
-<footer class="bg-black text-gray-200">
+<footer class="bg-black text-gray-200 mt-auto">
   <div class="max-w-6xl mx-auto px-4 py-8">
     <div class="flex flex-col md:flex-row justify-between items-center">
       <div class="mb-6 md:mb-0">
-        <img class="h-8 w-auto hover:cursor-pointer" src="https://cyklo2.pl/id/img/cyklo2.png" alt="logo"/>
+        <img class="h-8 w-auto hover:cursor-pointer hidden sm:block" src="https://cyklo2.pl/id/img/cyklo2.png" alt="logo"/>
         <p class="text-sm text-gray-400 mt-1">Twój partner rowerowy</p>
       </div>
 

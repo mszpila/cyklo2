@@ -1,0 +1,13 @@
+{
+  "tasks": {
+    "start": "deno run --allow-net --allow-env --allow-read deno-server.ts",
+    "dev": "deno run --allow-net --allow-env --allow-read --watch deno-server.ts"
+  },
+  "imports": {
+    "std/": "https://deno.land/std@0.208.0/"
+  },
+  "compilerOptions": {
+    "strict": true,
+    "lib": ["dom", "deno.ns"]
+  }
+}
